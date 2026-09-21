@@ -1,10 +1,41 @@
 /* ==========================================================================
    PRIYADHARSHAN LANDING PAGE
-   Refined Spatial Geometry & Fluid Alignment
-   Matches Reference Photo • Zero Blank Spots • Balanced UI/UX
+   Production-Grade Fluid Responsive Design System
+   Preserves visual identity • Continuous scaling • Calibrated vertical rhythm
    ========================================================================== */
 
-/* --- Reset & Global Setup --- */
+/* --- Design Tokens & Color Architecture --- */
+:root {
+  /* Controlled Palette: Wine / Mulberry to Dark Plum */
+  --color-canvas: #120310;
+  --color-bg-1: #872b5e;
+  --color-bg-2: #6a1e48;
+  --color-bg-3: #45102f;
+  --color-bg-4: #230617;
+  --color-bg-5: #120310;
+
+  /* Typography Colors */
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #e2c0d4;
+  --color-text-muted: #cba3bc;
+  --color-accent: #f29bc3;
+  --color-accent-glow: rgba(242, 155, 195, 0.25);
+
+  /* Interactive Elements */
+  --color-link: #5c88ff;
+  --color-link-hover: #85a6ff;
+  --color-btn-bg: rgba(28, 7, 21, 0.62);
+  --color-btn-bg-hover: rgba(42, 10, 32, 0.78);
+  --color-btn-border: rgba(255, 255, 255, 0.13);
+  --color-btn-border-hover: rgba(255, 255, 255, 0.25);
+  --color-email-badge: #3b6cf6;
+
+  /* Typography Font Families */
+  --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono-badge: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+}
+
+/* --- Resets & Global Foundation --- */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -23,17 +54,16 @@ body {
   width: 100%;
   min-height: 100vh;
   min-height: 100dvh;
-  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color: #ffffff;
-  background-color: #120312;
-  /* Exact multi-stop plum-to-dark gradient from reference photo */
-  background: linear-gradient(
-    180deg, 
-    #8c2d63 0%, 
-    #6b1e4c 28%, 
-    #4a1235 55%, 
-    #25071d 80%, 
-    #120312 100%
+  font-family: var(--font-display);
+  color: var(--color-text-primary);
+  background-color: var(--color-canvas);
+  background-image: linear-gradient(
+    180deg,
+    var(--color-bg-1) 0%,
+    var(--color-bg-2) 28%,
+    var(--color-bg-3) 58%,
+    var(--color-bg-4) 84%,
+    var(--color-bg-5) 100%
   );
   background-attachment: fixed;
   overflow-x: hidden;
@@ -41,7 +71,12 @@ body {
   flex-direction: column;
 }
 
-/* --- Container: Calibrated Vertical & Horizontal Placement --- */
+/* ==========================================================================
+   VERTICAL LAYOUT & RESPONSIVE CONTAINER
+   - Continuous adaptation across viewport heights & widths
+   - margin-block: auto prevents top/bottom data clipping on short screens
+   - Full safe-area inset protection for notch & home bars
+   ========================================================================== */
 .container {
   flex: 1;
   width: 100%;
@@ -50,81 +85,96 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* Proportional top spacing matches the reference photo's upper-third placement */
-  padding-top: clamp(64px, 18vh, 160px);
-  padding-bottom: max(32px, env(safe-area-inset-bottom));
-  padding-left: max(24px, env(safe-area-inset-left));
-  padding-right: max(24px, env(safe-area-inset-right));
+  justify-content: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Fluid padding that compresses on small viewports and breathes on larger screens */
+  padding-block: clamp(1.25rem, 4vh, 3.5rem);
+  padding-inline: clamp(1.25rem, 5vw, 2.5rem);
+  padding-top: max(clamp(1.25rem, 4vh, 3.5rem), env(safe-area-inset-top, 0px));
+  padding-bottom: max(clamp(1.25rem, 4vh, 3.5rem), env(safe-area-inset-bottom, 0px));
+  padding-left: max(clamp(1.25rem, 5vw, 2.5rem), env(safe-area-inset-left, 0px));
+  padding-right: max(clamp(1.25rem, 5vw, 2.5rem), env(safe-area-inset-right, 0px));
 }
 
-/* Central Responsive Content Column */
+/* Central Content Measure (Fluid width up to intentional readable maximum) */
 .content {
-  width: min(100%, 340px);
-  margin: 0 auto;
+  width: 100%;
+  max-width: clamp(290px, 86vw, 390px);
+  margin-inline: auto;
+  margin-block: auto;
   display: flex;
   flex-direction: column;
 }
 
-/* --- Intro Section Typography --- */
+/* ==========================================================================
+   TYPOGRAPHY SYSTEM (Fluid, Scaled, Proportional)
+   ========================================================================== */
 .intro {
   display: flex;
   flex-direction: column;
 }
 
+/* Salutation: "Hey, I’m" */
 .greeting {
-  font-size: clamp(1.45rem, 5.2vw, 1.85rem);
+  font-size: clamp(1.3rem, 3.2vw + 0.45rem, 1.8rem);
   font-weight: 700;
-  line-height: 1.1;
-  color: #ffffff;
+  line-height: 1.12;
+  color: var(--color-text-primary);
   letter-spacing: -0.025em;
   margin: 0;
 }
 
-/* Fluid Scaled Headline: Guaranteed to fit all mobile screens with 0 clipping */
+/* Name: "PRIYADHARSHAN" (Scaled mathematically to NEVER clip on any mobile width) */
 .name {
-  font-size: clamp(1.85rem, 7.8vw, 2.35rem);
+  font-size: clamp(1.65rem, 5.6vw + 0.45rem, 2.75rem);
   font-weight: 800;
-  line-height: 1.04;
+  line-height: 1.05;
   letter-spacing: -0.02em;
-  color: #f49ec4;
+  color: var(--color-accent);
   text-transform: uppercase;
-  margin: 4px 0 0 0;
-  text-shadow: 0 0 24px rgba(244, 158, 196, 0.32);
+  margin-top: clamp(2px, 0.5vh, 5px);
+  text-shadow: 0 0 22px var(--color-accent-glow);
   white-space: nowrap;
   word-break: normal;
   overflow-wrap: normal;
 }
 
+/* Description Paragraph: Optimal reading measure, fluid line-height */
 .bio {
-  font-size: clamp(0.88rem, 3.1vw, 0.94rem);
-  line-height: 1.44;
-  color: #e5c3d7;
+  font-size: clamp(0.85rem, 1.1vw + 0.55rem, 0.98rem);
+  line-height: clamp(1.4, 0.25vw + 1.38, 1.52);
+  color: var(--color-text-secondary);
   font-weight: 400;
-  margin: 10px 0 0 0;
-  max-width: 320px;
+  margin-top: clamp(8px, 1.4vh, 14px);
+  max-width: 36ch;
   letter-spacing: -0.01em;
 }
 
-/* --- Action Section: Balanced Gap to Eliminate Awkward Voids --- */
+/* ==========================================================================
+   ACTION BLOCK & INTERACTIVE BUTTONS
+   - Responsive components scaling height, padding, icon, and text
+   - Natural vertical pacing that scales with viewport height
+   ========================================================================== */
 .action {
   display: flex;
   flex-direction: column;
-  /* Dynamic vertical pacing matching the reference photo */
-  margin-top: clamp(34px, 7vh, 54px);
+  /* Dynamic vertical spacing prevents huge empty zones on tall displays and cutoffs on short ones */
+  margin-top: clamp(1.65rem, 5.5vh, 3.75rem);
 }
 
 .start-label {
-  font-size: 0.9rem;
-  color: #e5c3d7;
-  font-weight: 400;
+  font-size: clamp(0.84rem, 0.7vw + 0.6rem, 0.94rem);
+  color: var(--color-text-muted);
+  font-weight: 500;
   letter-spacing: 0.01em;
-  margin: 0 0 16px 0;
+  margin-bottom: clamp(12px, 2vh, 16px);
 }
 
 .button-group {
   display: flex;
   flex-direction: column;
-  gap: 13px;
+  gap: clamp(10px, 1.6vh, 14px);
   width: 100%;
 }
 
@@ -132,46 +182,62 @@ body {
 .btn {
   position: relative;
   width: 100%;
-  height: clamp(50px, 6.4vh, 54px);
-  background: rgba(28, 7, 23, 0.62);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.13);
-  border-radius: 13px;
-  color: #ffffff;
+  min-height: 48px;
+  height: clamp(48px, 5.8vh, 54px);
+  padding-inline: clamp(1rem, 3.5vw, 1.5rem);
+  padding-block: clamp(0.6rem, 1.2vh, 0.85rem);
+  background: var(--color-btn-bg);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--color-btn-border);
+  border-radius: clamp(10px, 1.6vw + 4px, 13px);
+  color: var(--color-text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: clamp(10px, 2.2vw, 13px);
   cursor: pointer;
   text-decoration: none;
   font-family: inherit;
-  transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
-  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.26);
+  transition: 
+    background-color 0.18s ease, 
+    border-color 0.18s ease, 
+    transform 0.18s ease, 
+    box-shadow 0.18s ease;
 }
 
 .btn:hover {
-  background: rgba(42, 10, 35, 0.8);
-  border-color: rgba(255, 255, 255, 0.25);
+  background: var(--color-btn-bg-hover);
+  border-color: var(--color-btn-border-hover);
   transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.32);
 }
 
 .btn:active {
   transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
+.btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+/* Google Icon SVG */
 .google-icon {
-  width: 22px;
-  height: 22px;
+  width: clamp(20px, 1.8vw + 12px, 22px);
+  height: clamp(20px, 1.8vw + 12px, 22px);
   flex-shrink: 0;
   display: block;
 }
 
+/* Email Icon Badge */
 .email-badge {
-  width: 24px;
-  height: 24px;
+  width: clamp(21px, 1.8vw + 13px, 24px);
+  height: clamp(21px, 1.8vw + 13px, 24px);
   border-radius: 50%;
-  background: #406bf5;
+  background: var(--color-email-badge);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -179,85 +245,87 @@ body {
 }
 
 .email-symbol {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.95rem;
+  font-family: var(--font-mono-badge);
+  font-size: clamp(0.82rem, 0.8vw + 0.52rem, 0.94rem);
   font-weight: 700;
   color: #ffffff;
   line-height: 1;
   margin-top: -1px;
 }
 
+/* Button Label Text */
 .btn-text {
-  font-size: 0.95rem;
+  font-size: clamp(0.88rem, 0.6vw + 0.72rem, 0.98rem);
   font-weight: 600;
   letter-spacing: -0.01em;
-  color: #ffffff;
+  color: var(--color-text-primary);
   white-space: nowrap;
 }
 
-/* --- Switcher / Login Link --- */
+/* ==========================================================================
+   ACCOUNT SWITCHER / LOGIN LINK
+   ========================================================================== */
 .switch-text {
-  margin: 20px 0 0 0;
+  margin-top: clamp(16px, 2.8vh, 24px);
   text-align: center;
-  font-size: 0.88rem;
-  color: #c9afc1;
+  font-size: clamp(0.82rem, 0.5vw + 0.68rem, 0.9rem);
+  color: var(--color-text-muted);
 }
 
 .login-link {
-  color: #5c82ff;
+  color: var(--color-link);
   font-weight: 600;
   text-decoration: underline;
   text-underline-offset: 2px;
+  padding: 4px;
   transition: color 0.15s ease;
 }
 
 .login-link:hover {
-  color: #85a2ff;
+  color: var(--color-link-hover);
+}
+
+.login-link:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 /* ==========================================================================
-   RESPONSIVE ADAPTATIONS (Short Viewports & Tight Mobile Screens)
+   SHORT SCREENS & EXTREME VIEWPORTS ADAPTATION
+   (Smooth gracefully without separate divergent layouts)
    ========================================================================== */
-
-/* Short screen heights (e.g. landscape or compact phones) */
-@media (max-height: 680px) {
+@media (max-height: 600px) {
   .container {
-    padding-top: clamp(32px, 8vh, 56px);
-    justify-content: center;
+    padding-block: 1rem;
   }
 
   .action {
-    margin-top: clamp(20px, 4vh, 32px);
+    margin-top: 1.25rem;
   }
 
   .start-label {
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
 
   .button-group {
-    gap: 10px;
-  }
-
-  .btn {
-    height: 46px;
-  }
-}
-
-/* Very narrow devices (<= 340px) */
-@media (max-width: 340px) {
-  .content {
-    width: 100%;
-  }
-
-  .name {
-    font-size: 1.65rem;
-  }
-
-  .btn {
     gap: 8px;
   }
 
-  .btn-text {
-    font-size: 0.9rem;
+  .btn {
+    min-height: 44px;
+    height: 44px;
+  }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY & PREFERS-REDUCED-MOTION
+   ========================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
