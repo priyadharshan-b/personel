@@ -1,103 +1,60 @@
 /* ==========================================================================
-   PRIYADHARSHAN PORTFOLIO & AUTH PORTAL STYLES
-   Pixel-accurate replication with modern glassmorphism & fluid responsiveness
+   PRIYADHARSHAN PORTFOLIO & AUTH PORTAL
+   ADVANCED MULTI-TIER RESPONSIVE ENGINE
+   Dynamic Position Shifting & Fluid Resizing Across All Screen Sizes
    ========================================================================== */
 
 /* --- Theme Variable Palettes --- */
 :root {
-  /* Default: Mulberry Plum (Exact Match to User Screenshot) */
+  /* Default: Mulberry Plum (Exact Match to User Mobile Screenshot) */
   --bg-gradient-top: #7e2752;
   --bg-gradient-mid: #43122e;
   --bg-gradient-bottom: #12030f;
   --accent-name: #e995be;
-  --accent-name-glow: rgba(233, 149, 190, 0.25);
+  --accent-name-glow: rgba(233, 149, 190, 0.28);
   --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.78);
-  --text-muted: rgba(255, 255, 255, 0.62);
-  --btn-bg: rgba(26, 6, 19, 0.52);
-  --btn-border: rgba(255, 255, 255, 0.15);
-  --btn-border-hover: rgba(255, 255, 255, 0.32);
-  --btn-glow-hover: rgba(233, 149, 190, 0.18);
-  --link-color: #5d87ff;
-  --link-color-hover: #81a5ff;
+  --text-secondary: rgba(255, 255, 255, 0.82);
+  --text-muted: rgba(255, 255, 255, 0.65);
+  --btn-bg: rgba(26, 6, 19, 0.55);
+  --btn-border: rgba(255, 255, 255, 0.16);
+  --btn-border-hover: rgba(255, 255, 255, 0.36);
+  --btn-glow-hover: rgba(233, 149, 190, 0.22);
+  --link-color: #6c94ff;
+  --link-color-hover: #9bb7ff;
   --email-icon-bg: #4f78fa;
-  --orb-color-1: rgba(142, 38, 92, 0.35);
-  --orb-color-2: rgba(85, 17, 60, 0.4);
-  --orb-color-3: rgba(233, 149, 190, 0.15);
-  --surface-glass: rgba(25, 7, 18, 0.85);
-}
+  --orb-color-1: rgba(142, 38, 92, 0.45);
+  --orb-color-2: rgba(85, 17, 60, 0.5);
+  --orb-color-3: rgba(233, 149, 190, 0.2);
+  --surface-glass: rgba(26, 7, 20, 0.88);
+  --surface-border: rgba(255, 255, 255, 0.14);
 
-/* Palette Variations */
-body.theme-cyber-violet {
-  --bg-gradient-top: #5c1e7a;
-  --bg-gradient-mid: #2c0b48;
-  --bg-gradient-bottom: #0b0217;
-  --accent-name: #cf95e9;
-  --accent-name-glow: rgba(207, 149, 233, 0.25);
-  --btn-bg: rgba(28, 8, 48, 0.52);
-  --btn-border: rgba(255, 255, 255, 0.16);
-  --btn-border-hover: rgba(207, 149, 233, 0.4);
-  --btn-glow-hover: rgba(207, 149, 233, 0.2);
-  --link-color: #7986cb;
-  --email-icon-bg: #6366f1;
-  --orb-color-1: rgba(124, 58, 237, 0.35);
-  --orb-color-2: rgba(91, 33, 182, 0.4);
-  --orb-color-3: rgba(192, 132, 252, 0.18);
-  --surface-glass: rgba(20, 5, 36, 0.88);
-}
+  /* --- Dynamic Responsive Tokens (Default Base) --- */
+  --portal-max-width: 100%;
+  --portal-gap: 2rem;
+  --portal-padding: 1.25rem;
+  --portal-align: stretch;
+  --portal-justify: space-between;
 
-body.theme-sunset-rose {
-  --bg-gradient-top: #8b253b;
-  --bg-gradient-mid: #4a1020;
-  --bg-gradient-bottom: #120307;
-  --accent-name: #f7a08b;
-  --accent-name-glow: rgba(247, 160, 139, 0.25);
-  --btn-bg: rgba(36, 7, 14, 0.52);
-  --btn-border: rgba(255, 255, 255, 0.16);
-  --btn-border-hover: rgba(247, 160, 139, 0.4);
-  --btn-glow-hover: rgba(247, 160, 139, 0.2);
-  --link-color: #f472b6;
-  --email-icon-bg: #e11d48;
-  --orb-color-1: rgba(225, 29, 72, 0.32);
-  --orb-color-2: rgba(159, 18, 57, 0.4);
-  --orb-color-3: rgba(251, 146, 60, 0.18);
-  --surface-glass: rgba(30, 6, 12, 0.88);
-}
+  /* Typography Tokens */
+  --salutation-font-size: 1.25rem;
+  --creator-font-size: 2rem;
+  --bio-font-size: 0.95rem;
+  --bio-max-width: 440px;
 
-body.theme-emerald-noir {
-  --bg-gradient-top: #104838;
-  --bg-gradient-mid: #0b2b22;
-  --bg-gradient-bottom: #020f0b;
-  --accent-name: #6ee7b7;
-  --accent-name-glow: rgba(110, 231, 183, 0.25);
-  --btn-bg: rgba(6, 26, 20, 0.55);
-  --btn-border: rgba(255, 255, 255, 0.14);
-  --btn-border-hover: rgba(110, 231, 183, 0.4);
-  --btn-glow-hover: rgba(110, 231, 183, 0.2);
-  --link-color: #38bdf8;
-  --email-icon-bg: #059669;
-  --orb-color-1: rgba(16, 185, 129, 0.32);
-  --orb-color-2: rgba(4, 120, 87, 0.38);
-  --orb-color-3: rgba(52, 211, 153, 0.18);
-  --surface-glass: rgba(5, 20, 16, 0.88);
-}
-
-body.theme-midnight-blue {
-  --bg-gradient-top: #1e3a8a;
-  --bg-gradient-mid: #111e48;
-  --bg-gradient-bottom: #030717;
-  --accent-name: #93c5fd;
-  --accent-name-glow: rgba(147, 197, 253, 0.25);
-  --btn-bg: rgba(9, 19, 48, 0.55);
-  --btn-border: rgba(255, 255, 255, 0.14);
-  --btn-border-hover: rgba(147, 197, 253, 0.4);
-  --btn-glow-hover: rgba(147, 197, 253, 0.2);
-  --link-color: #60a5fa;
-  --email-icon-bg: #2563eb;
-  --orb-color-1: rgba(37, 99, 235, 0.32);
-  --orb-color-2: rgba(30, 58, 138, 0.4);
-  --orb-color-3: rgba(96, 165, 250, 0.18);
-  --surface-glass: rgba(6, 14, 36, 0.88);
+  /* Button Sizing & Placement Tokens */
+  --btn-height: 52px;
+  --btn-font-size: 0.96rem;
+  --btn-radius: 14px;
+  --btn-gap: 0.85rem;
+  --btn-icon-size: 22px;
+  --btn-max-width: 100%;
+  --button-direction: column;
+  --action-position-margin-top: auto;
+  --action-position-padding-bottom: 1.5rem;
+  --action-card-bg: transparent;
+  --action-card-border: none;
+  --action-card-padding: 0;
+  --action-card-shadow: none;
 }
 
 /* --- Base Resets & Global Setup --- */
@@ -107,16 +64,32 @@ body.theme-midnight-blue {
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
 }
 
-html, body {
+html {
+  font-size: 16px;
+  height: 100%;
+}
+
+body {
   width: 100%;
   min-height: 100%;
+  min-height: 100dvh;
   font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   color: var(--text-primary);
-  background-color: #0b020a;
+  background-color: var(--bg-gradient-bottom);
+  background-image: radial-gradient(
+    ellipse 120% 80% at 50% -10%, 
+    var(--bg-gradient-top) 0%, 
+    var(--bg-gradient-mid) 52%, 
+    var(--bg-gradient-bottom) 100%
+  );
+  background-attachment: fixed;
   overflow-x: hidden;
-  transition: background-color 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
 }
 
 /* Ambient Animated Mesh Background */
@@ -131,314 +104,295 @@ html, body {
 .mesh-orb {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.8;
-  animation: floatOrb 18s ease-in-out infinite alternate;
+  filter: blur(80px);
+  opacity: 0.75;
+  animation: floatOrb 20s ease-in-out infinite alternate;
 }
 
 .orb-1 {
-  top: 5%;
-  left: 20%;
-  width: 450px;
-  height: 450px;
+  top: -5%;
+  left: 10%;
+  width: clamp(280px, 45vw, 600px);
+  height: clamp(280px, 45vw, 600px);
   background: var(--orb-color-1);
 }
 
 .orb-2 {
-  bottom: 15%;
-  right: 15%;
-  width: 480px;
-  height: 480px;
+  bottom: 5%;
+  right: 5%;
+  width: clamp(300px, 50vw, 650px);
+  height: clamp(300px, 50vw, 650px);
   background: var(--orb-color-2);
-  animation-duration: 22s;
+  animation-duration: 25s;
   animation-direction: alternate-reverse;
 }
 
 .orb-3 {
-  top: 40%;
+  top: 35%;
   left: 45%;
-  width: 320px;
-  height: 320px;
+  width: clamp(200px, 35vw, 450px);
+  height: clamp(200px, 35vw, 450px);
   background: var(--orb-color-3);
-  animation-duration: 15s;
+  animation-duration: 18s;
 }
 
 @keyframes floatOrb {
-  0% {
-    transform: translate(0, 0) scale(1);
-  }
-  50% {
-    transform: translate(40px, -30px) scale(1.08);
-  }
-  100% {
-    transform: translate(-30px, 40px) scale(0.95);
-  }
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(30px, -25px) scale(1.06); }
+  100% { transform: translate(-25px, 35px) scale(0.96); }
 }
 
-/* --- App Viewport & Frame Containers --- */
-.app-viewport {
+/* --- Top Navigation / Brand Bar --- */
+.top-nav {
   position: relative;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem 1rem;
-  z-index: 10;
-}
-
-/* PHONE FRAME MODE (Mockup View) */
-body.mode-frame .phone-frame {
-  position: relative;
-  width: 385px;
-  height: 800px;
-  max-height: 90vh;
-  border-radius: 46px;
-  background: #000;
-  box-shadow: 
-    0 0 0 10px #242226,
-    0 0 0 12px #3e3a42,
-    0 25px 60px -15px rgba(0, 0, 0, 0.85),
-    0 0 50px -10px var(--accent-name-glow);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-/* FLUID FULLSCREEN MODE */
-body.mode-fluid .phone-frame {
-  position: relative;
+  z-index: 25;
   width: 100%;
-  max-width: 540px;
-  min-height: 100vh;
-  border-radius: 0;
-  box-shadow: none;
-  background: transparent;
-  display: flex;
-  flex-direction: column;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-body.mode-fluid .app-viewport {
-  padding-top: 52px;
-  padding-bottom: 0;
-  align-items: stretch;
-}
-
-body.mode-fluid .phone-notch,
-body.mode-fluid .status-bar {
-  display: none;
-}
-
-/* Phone Bezel & Hardware Elements */
-.phone-notch {
-  position: absolute;
-  top: 10px;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  z-index: 50;
-  pointer-events: none;
-}
-
-.dynamic-island {
-  width: 110px;
-  height: 28px;
-  background: #000;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  padding-right: 12px;
-  gap: 8px;
-}
-
-.camera-lens {
-  width: 10px;
-  height: 10px;
-  background: radial-gradient(circle, #0b1a2a 40%, #000 80%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-}
-
-.sensor-dot {
-  width: 5px;
-  height: 5px;
-  background: #0e0515;
-  border-radius: 50%;
-}
-
-/* Status Bar */
-.status-bar {
-  height: 48px;
-  padding: 10px 24px 0 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: max(0.85rem, env(safe-area-inset-top)) clamp(1rem, 4vw, 2.5rem) 0.4rem clamp(1rem, 4vw, 2.5rem);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.86rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
-  z-index: 40;
-  user-select: none;
 }
 
-.status-icons {
+.nav-brand {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 0.5rem;
+  color: var(--text-primary);
+  text-decoration: none;
+  font-size: 0.86rem;
+  font-weight: 600;
+  padding: 6px 13px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  transition: all 0.25s ease;
 }
 
-.battery-icon {
-  width: 22px;
-  height: 11px;
-  border: 1.5px solid rgba(255, 255, 255, 0.85);
-  border-radius: 3.5px;
-  padding: 1.2px;
-  position: relative;
+.nav-brand:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-1px);
 }
 
-.battery-icon::after {
-  content: '';
-  position: absolute;
-  right: -3.5px;
-  top: 2.2px;
-  width: 2px;
-  height: 4.5px;
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 0 1px 1px 0;
-}
-
-.battery-fill {
-  width: 78%;
-  height: 100%;
-  background: #ffffff;
-  border-radius: 1.5px;
-}
-
-/* --- Canvas / Screen Background --- */
-.screen-canvas {
-  position: relative;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  background: linear-gradient(180deg, 
-    var(--bg-gradient-top) 0%, 
-    var(--bg-gradient-mid) 48%, 
-    var(--bg-gradient-bottom) 100%
-  );
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Subtle atmospheric lighting layer */
-.hero-atmosphere {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 380px;
-  pointer-events: none;
-  overflow: hidden;
-}
-
-.subtle-light-beam {
-  position: absolute;
-  top: -120px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 320px;
-  height: 320px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+.brand-dot {
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
+  background: var(--accent-name);
+  box-shadow: 0 0 8px var(--accent-name);
 }
 
-/* --- Main Portal Content --- */
-.portal-content {
+.nav-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 5px 11px;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.badge-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #34d399;
+  box-shadow: 0 0 6px rgba(52, 211, 153, 0.6);
+}
+
+/* --- Main Viewport Container --- */
+.app-viewport {
   position: relative;
+  z-index: 10;
   flex: 1;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--portal-padding);
+}
+
+/* Portal Grid Wrapper */
+.portal-grid {
+  width: 100%;
+  max-width: var(--portal-max-width);
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end; /* Matches the lower vertical placement in user image */
-  padding: 0 28px 24px 28px;
-  z-index: 10;
+  justify-content: var(--portal-justify);
+  align-items: var(--portal-align);
+  gap: var(--portal-gap);
+  min-height: calc(100dvh - 90px);
 }
 
-/* Hero Typography Section */
+/* --- Hero Showcase Section --- */
 .intro-block {
-  margin-bottom: 2rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: var(--hero-margin-top, 0);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 4px 12px;
+  background: rgba(233, 149, 190, 0.12);
+  border: 1px solid rgba(233, 149, 190, 0.25);
+  border-radius: 9999px;
+  margin-bottom: var(--pill-margin-bottom, 1rem);
+}
+
+.pill-sparkle {
+  color: var(--accent-name);
+  font-size: 0.85rem;
+}
+
+.pill-text {
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--accent-name);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .hero-headline {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
-  margin-bottom: 0.75rem;
+  gap: 0.2rem;
+  margin-bottom: 0.85rem;
+  width: 100%;
 }
 
 .salutation {
-  font-size: 1.85rem;
+  font-size: var(--salutation-font-size);
   font-weight: 700;
   line-height: 1.15;
   color: var(--text-primary);
   letter-spacing: -0.02em;
 }
 
+/* Fluid Scaled Headline: Sized by responsive engine per range */
 .creator-name {
-  font-size: 2.35rem;
+  font-size: var(--creator-font-size);
   font-weight: 800;
-  line-height: 1.1;
+  line-height: 1.05;
   letter-spacing: -0.015em;
   color: var(--accent-name);
   text-transform: uppercase;
-  text-shadow: 0 2px 16px var(--accent-name-glow);
+  text-shadow: 0 2px 22px var(--accent-name-glow);
+  word-break: normal;
+  overflow-wrap: normal;
+  max-width: 100%;
 }
 
 .hero-bio {
-  font-size: 0.98rem;
-  line-height: 1.5;
+  font-size: var(--bio-font-size);
+  line-height: 1.55;
   color: var(--text-secondary);
   font-weight: 400;
-  max-width: 330px;
+  max-width: var(--bio-max-width);
   letter-spacing: -0.01em;
 }
 
-/* Action Block & Buttons */
-.action-block {
+/* Desktop Feature Highlights */
+.desktop-highlights {
+  display: none;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+.highlight-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  font-size: 0.85rem;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+}
+
+.highlight-chip svg {
+  color: var(--accent-name);
+  flex-shrink: 0;
+}
+
+/* --- Action & Auth Section (Buttons & Placement Engine) --- */
+.action-block-card {
+  position: relative;
+  width: 100%;
+  max-width: var(--btn-max-width);
+  margin-top: var(--action-position-margin-top);
+  padding-bottom: var(--action-position-padding-bottom);
+  background: var(--action-card-bg);
+  border: var(--action-card-border);
+  border-radius: var(--action-card-radius, 0);
+  padding: var(--action-card-padding);
+  box-shadow: var(--action-card-shadow);
+  backdrop-filter: var(--action-card-backdrop, none);
+  -webkit-backdrop-filter: var(--action-card-backdrop, none);
+}
+
+.action-card-inner {
   display: flex;
   flex-direction: column;
-  gap: 1.1rem;
+  gap: var(--action-inner-gap, 1.15rem);
+  width: 100%;
 }
 
 .action-header {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 0.25rem;
 }
 
 .action-prompt {
-  font-size: 0.92rem;
+  font-size: var(--prompt-font-size, 0.95rem);
   color: var(--text-muted);
   font-weight: 500;
   letter-spacing: 0.01em;
 }
 
-.button-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
+.action-subprompt {
+  display: none;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.4;
 }
 
-/* Primary Auth Buttons */
+/* Dynamic Button Group: Direction & Sizing adapt to ranges */
+.button-group {
+  display: flex;
+  flex-direction: var(--button-direction);
+  gap: var(--btn-gap);
+  width: 100%;
+}
+
+/* Primary Auth Buttons: Sized and proportioned based on active range */
 .btn-auth {
   position: relative;
   width: 100%;
-  height: 54px;
+  height: var(--btn-height);
   background: var(--btn-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border: 1.5px solid var(--btn-border);
-  border-radius: 14px;
+  border-radius: var(--btn-radius);
   color: var(--text-primary);
   display: flex;
   align-items: center;
@@ -453,7 +407,7 @@ body.mode-fluid .status-bar {
   position: absolute;
   inset: 0;
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 60%);
-  opacity: 0.7;
+  opacity: 0.6;
   pointer-events: none;
   transition: opacity 0.25s ease;
 }
@@ -463,7 +417,7 @@ body.mode-fluid .status-bar {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.85rem;
+  gap: clamp(0.5rem, 2vw, 0.85rem);
   z-index: 2;
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
@@ -477,11 +431,13 @@ body.mode-fluid .status-bar {
 
 .google-svg {
   display: block;
+  width: var(--btn-icon-size);
+  height: var(--btn-icon-size);
 }
 
 .email-icon-wrap {
-  width: 24px;
-  height: 24px;
+  width: var(--btn-icon-size);
+  height: var(--btn-icon-size);
   border-radius: 50%;
   background: var(--email-icon-bg);
   display: flex;
@@ -492,7 +448,7 @@ body.mode-fluid .status-bar {
 
 .email-symbol {
   font-family: 'Space Grotesk', system-ui, sans-serif;
-  font-size: 0.95rem;
+  font-size: calc(var(--btn-icon-size) * 0.58);
   font-weight: 700;
   color: #ffffff;
   line-height: 1;
@@ -500,19 +456,20 @@ body.mode-fluid .status-bar {
 }
 
 .btn-text {
-  font-size: 0.98rem;
+  font-size: var(--btn-font-size);
   font-weight: 700;
   letter-spacing: -0.01em;
   color: #ffffff;
+  white-space: nowrap;
 }
 
 /* Button Micro-Interactions */
 .btn-auth:hover {
   border-color: var(--btn-border-hover);
-  background: rgba(38, 10, 28, 0.65);
+  background: rgba(44, 10, 32, 0.72);
   box-shadow: 
-    0 6px 24px rgba(0, 0, 0, 0.38),
-    0 0 20px var(--btn-glow-hover);
+    0 8px 26px rgba(0, 0, 0, 0.4),
+    0 0 24px var(--btn-glow-hover);
   transform: translateY(-2px);
 }
 
@@ -552,9 +509,9 @@ body.mode-fluid .status-bar {
   align-items: center;
   justify-content: center;
   gap: 0.45rem;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--text-muted);
-  margin-top: 0.4rem;
+  margin-top: 0.2rem;
 }
 
 .link-switch {
@@ -562,7 +519,7 @@ body.mode-fluid .status-bar {
   border: none;
   color: var(--link-color);
   font-weight: 700;
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   font-family: inherit;
   cursor: pointer;
   text-decoration: underline;
@@ -575,20 +532,420 @@ body.mode-fluid .status-bar {
   text-shadow: 0 0 10px rgba(93, 135, 255, 0.45);
 }
 
-/* Bottom Home Bar (Mobile Style) */
-.bottom-home-bar {
-  width: 135px;
-  height: 4.5px;
-  background: rgba(255, 255, 255, 0.28);
-  border-radius: 4px;
-  margin: 1.5rem auto 0 auto;
+/* Direct Portfolio Link Option */
+.portfolio-direct-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.4rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
-/* --- Interactive Drawer / Bottom Sheet --- */
+.direct-divider {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.portfolio-direct-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.portfolio-direct-link:hover {
+  color: var(--text-primary);
+  transform: translateX(2px);
+}
+
+/* ==========================================================================
+   COMPLEX MULTI-TIER SCREEN-SIZE RANGES (Width, Height & Orientation)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   RANGE 1: Extra Small / Narrow Mobile (Width <= 359px)
+   e.g. Galaxy Z Fold outer screen (280px-320px), iPhone SE 1st Gen (320px)
+   - Tight, compact buttons moved UP close to intro
+   - Proportional typography so ZERO text overflows
+   -------------------------------------------------------------------------- */
+@media (max-width: 359.98px) {
+  :root {
+    --portal-padding: 0.85rem;
+    --portal-gap: 1.25rem;
+    --salutation-font-size: 1.1rem;
+    --creator-font-size: clamp(1.4rem, 6.8vw, 1.7rem);
+    --bio-font-size: 0.85rem;
+    --btn-height: 44px;
+    --btn-font-size: 0.86rem;
+    --btn-radius: 11px;
+    --btn-gap: 0.6rem;
+    --btn-icon-size: 19px;
+    --action-position-margin-top: 1.25rem;
+    --action-position-padding-bottom: 0.5rem;
+    --pill-margin-bottom: 0.65rem;
+  }
+
+  .status-pill {
+    padding: 3px 9px;
+  }
+
+  .hero-headline {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   RANGE 2: Standard Compact Mobile (360px <= Width <= 389px)
+   e.g. Galaxy S10/S20/S21, Redmi/Xiaomi, Pixel 4a/5 (360px–384px)
+   - Buttons height 48px, positioned in lower thumb-reach quadrant
+   - Text "PRIYADHARSHAN" scaled to fit with >80px safety margin
+   -------------------------------------------------------------------------- */
+@media (min-width: 360px) and (max-width: 389.98px) {
+  :root {
+    --portal-padding: 1.25rem 1.15rem;
+    --portal-gap: 1.85rem;
+    --salutation-font-size: 1.25rem;
+    --creator-font-size: clamp(1.72rem, 7.2vw, 2.15rem);
+    --bio-font-size: 0.92rem;
+    --btn-height: 48px;
+    --btn-font-size: 0.92rem;
+    --btn-radius: 12px;
+    --btn-gap: 0.75rem;
+    --btn-icon-size: 21px;
+    --action-position-margin-top: auto;
+    --action-position-padding-bottom: 1.25rem;
+  }
+
+  .intro-block {
+    margin-top: auto;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   RANGE 3: Modern Mid-Large Flagship Mobile (390px <= Width <= 439px)
+   e.g. iPhone 12/13/14/15/16 (390px), Pixel 7/8 (412px), S23/S24 (412px), Pro Max (430px)
+   - Exactly matches the user's high-res mobile phone screenshot
+   - Generous button height 52px, lower positioned with 2rem thumb clearance
+   -------------------------------------------------------------------------- */
+@media (min-width: 390px) and (max-width: 439.98px) {
+  :root {
+    --portal-max-width: 420px;
+    --portal-padding: 1.5rem 1.35rem;
+    --portal-gap: 2.25rem;
+    --salutation-font-size: 1.4rem;
+    --creator-font-size: clamp(2.15rem, 7.5vw, 2.6rem);
+    --bio-font-size: 0.96rem;
+    --btn-height: 52px;
+    --btn-font-size: 0.96rem;
+    --btn-radius: 14px;
+    --btn-gap: 0.85rem;
+    --btn-icon-size: 22px;
+    --action-position-margin-top: auto;
+    --action-position-padding-bottom: 2rem;
+  }
+
+  .intro-block {
+    margin-top: auto;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   RANGE 4: Phablets, Small Tablets & Large Mobile (440px <= Width <= 599px)
+   - Centered container with max-width 440px
+   - Button height 54px with enhanced subtle border glow
+   -------------------------------------------------------------------------- */
+@media (min-width: 440px) and (max-width: 599.98px) {
+  :root {
+    --portal-max-width: 440px;
+    --portal-padding: 1.75rem 1.5rem;
+    --portal-gap: 2.5rem;
+    --salutation-font-size: 1.5rem;
+    --creator-font-size: clamp(2.35rem, 7.2vw, 2.85rem);
+    --bio-font-size: 1rem;
+    --btn-height: 54px;
+    --btn-font-size: 0.98rem;
+    --btn-radius: 14px;
+    --btn-gap: 0.9rem;
+    --btn-icon-size: 23px;
+    --action-position-margin-top: auto;
+    --action-position-padding-bottom: 2.25rem;
+  }
+
+  .intro-block {
+    margin-top: auto;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   RANGE 5: Short Viewport Height Handling (Height <= 660px in Portrait)
+   - Prevents buttons from being pushed off-screen on compact phones
+   - Shifts buttons upwards, compresses vertical gaps
+   -------------------------------------------------------------------------- */
+@media (max-height: 660px) and (orientation: portrait) {
+  :root {
+    --portal-gap: 1rem;
+    --hero-margin-top: 0;
+    --pill-margin-bottom: 0.5rem;
+    --salutation-font-size: 1.15rem;
+    --creator-font-size: 1.75rem;
+    --bio-font-size: 0.86rem;
+    --btn-height: 44px;
+    --btn-gap: 0.55rem;
+    --action-position-margin-top: 0.75rem;
+    --action-position-padding-bottom: 0.5rem;
+  }
+
+  .intro-block {
+    margin-top: 0;
+  }
+
+  .portfolio-direct-wrap {
+    display: none; /* Hide non-critical footer on ultra-short screens */
+  }
+}
+
+/* --------------------------------------------------------------------------
+   RANGE 6: Mobile Landscape Mode (Height <= 550px in Landscape)
+   - Reconfigures layout into a sleek 2-Column horizontal row!
+   - Hero on left, buttons shifted to the right
+   - Completely avoids vertical scrolling in landscape
+   -------------------------------------------------------------------------- */
+@media (orientation: landscape) and (max-height: 550px) {
+  :root {
+    --portal-max-width: 920px;
+    --portal-padding: 0.75rem 1.5rem;
+    --portal-gap: 2rem;
+    --portal-align: center;
+    --portal-justify: center;
+    --salutation-font-size: 1.15rem;
+    --creator-font-size: clamp(1.6rem, 5vw, 2.2rem);
+    --bio-font-size: 0.84rem;
+    --btn-height: 42px;
+    --btn-font-size: 0.88rem;
+    --btn-gap: 0.65rem;
+    --btn-radius: 11px;
+    --btn-icon-size: 19px;
+    --action-position-margin-top: 0;
+    --action-position-padding-bottom: 0;
+    --pill-margin-bottom: 0.5rem;
+  }
+
+  .top-nav {
+    display: none; /* Maximize canvas in short landscape */
+  }
+
+  .portal-grid {
+    display: grid !important;
+    grid-template-columns: 1.1fr 0.9fr !important;
+    align-items: center;
+    min-height: calc(100dvh - 20px);
+  }
+
+  .intro-block {
+    margin-top: 0;
+  }
+
+  .portfolio-direct-wrap {
+    display: none;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   RANGE 7: Compact Tablets & Foldables Unfolded (600px <= Width <= 767px)
+   - Centered card panel with soft frosted glass backdrop
+   - Buttons centered with balanced spacing
+   -------------------------------------------------------------------------- */
+@media (min-width: 600px) and (max-width: 767.98px) {
+  :root {
+    --portal-max-width: 500px;
+    --portal-padding: 2.5rem 2rem;
+    --portal-gap: 2.25rem;
+    --portal-justify: center;
+    --salutation-font-size: 1.5rem;
+    --creator-font-size: 2.5rem;
+    --bio-font-size: 1rem;
+    --btn-height: 52px;
+    --btn-font-size: 0.96rem;
+    --btn-radius: 14px;
+    --btn-gap: 0.85rem;
+    --action-card-bg: rgba(26, 7, 20, 0.45);
+    --action-card-border: 1px solid var(--surface-border);
+    --action-card-radius: 24px;
+    --action-card-padding: 1.75rem;
+    --action-card-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    --action-card-backdrop: blur(20px);
+    --action-position-margin-top: 0;
+    --action-position-padding-bottom: 0;
+  }
+
+  .portal-grid {
+    min-height: auto;
+    margin: auto;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   RANGE 8: Standard Tablets in Portrait (768px <= Width <= 1023px)
+   - Centered Luxury Glass Portal Card
+   - Feature highlight chips active
+   -------------------------------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 1023.98px) {
+  :root {
+    --portal-max-width: 550px;
+    --portal-padding: 3rem 2rem;
+    --portal-gap: 2.5rem;
+    --portal-justify: center;
+    --salutation-font-size: 1.65rem;
+    --creator-font-size: 2.85rem;
+    --bio-font-size: 1.04rem;
+    --btn-height: 54px;
+    --btn-font-size: 0.98rem;
+    --btn-radius: 14px;
+    --btn-gap: 0.9rem;
+    --action-card-bg: rgba(26, 7, 20, 0.6);
+    --action-card-border: 1px solid var(--surface-border);
+    --action-card-radius: 28px;
+    --action-card-padding: 2.25rem 2rem;
+    --action-card-shadow: 0 25px 60px rgba(0, 0, 0, 0.55), 0 0 40px -10px var(--accent-name-glow);
+    --action-card-backdrop: blur(28px);
+    --action-position-margin-top: 0;
+    --action-position-padding-bottom: 0;
+  }
+
+  .portal-grid {
+    min-height: auto;
+    margin: auto;
+  }
+
+  .desktop-highlights {
+    display: flex;
+  }
+
+  .action-subprompt {
+    display: block;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   RANGE 9: Standard Desktop & Widescreen (1024px <= Width <= 1439px)
+   - Luxury Two-Column Split Architecture
+   - Left: Hero Showcase, Status pill, Bio & Interactive highlight cards
+   - Right: Floating Glassmorphic Auth Portal with custom buttons
+   -------------------------------------------------------------------------- */
+@media (min-width: 1024px) and (max-width: 1439.98px) {
+  :root {
+    --portal-max-width: 1100px;
+    --salutation-font-size: 1.85rem;
+    --creator-font-size: clamp(2.6rem, 3.8vw, 3.4rem);
+    --bio-font-size: 1.08rem;
+    --bio-max-width: 480px;
+    --btn-height: 54px;
+    --btn-font-size: 0.98rem;
+    --btn-radius: 15px;
+    --btn-gap: 0.95rem;
+    --btn-icon-size: 23px;
+    --action-card-bg: var(--surface-glass);
+    --action-card-border: 1px solid rgba(255, 255, 255, 0.16);
+    --action-card-radius: 28px;
+    --action-card-padding: 2.75rem 2.25rem;
+    --action-card-shadow: 0 30px 70px -10px rgba(0, 0, 0, 0.65), 0 0 45px -10px var(--accent-name-glow);
+    --action-card-backdrop: blur(32px);
+    --action-position-margin-top: 0;
+    --action-position-padding-bottom: 0;
+  }
+
+  .portal-grid {
+    display: grid !important;
+    grid-template-columns: 1.15fr 0.85fr !important;
+    gap: 4.5rem;
+    align-items: center;
+    min-height: calc(100dvh - 120px);
+  }
+
+  .desktop-highlights {
+    display: flex;
+  }
+
+  .action-subprompt {
+    display: block;
+  }
+
+  .toast-container {
+    left: auto;
+    right: 28px;
+    bottom: 28px;
+    max-width: 380px;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   RANGE 10: Ultra-Wide & 4K Displays (Width >= 1440px)
+   - Expansive 1240px container
+   - Elevated typography and buttons (58px height)
+   -------------------------------------------------------------------------- */
+@media (min-width: 1440px) {
+  :root {
+    --portal-max-width: 1240px;
+    --salutation-font-size: 2.1rem;
+    --creator-font-size: 3.8rem;
+    --bio-font-size: 1.15rem;
+    --bio-max-width: 540px;
+    --btn-height: 58px;
+    --btn-font-size: 1.02rem;
+    --btn-radius: 16px;
+    --btn-gap: 1.1rem;
+    --btn-icon-size: 24px;
+    --action-card-bg: var(--surface-glass);
+    --action-card-border: 1px solid rgba(255, 255, 255, 0.18);
+    --action-card-radius: 32px;
+    --action-card-padding: 3.25rem 2.75rem;
+    --action-card-shadow: 0 35px 80px -10px rgba(0, 0, 0, 0.7), 0 0 55px -10px var(--accent-name-glow);
+    --action-card-backdrop: blur(36px);
+    --action-position-margin-top: 0;
+    --action-position-padding-bottom: 0;
+  }
+
+  .portal-grid {
+    display: grid !important;
+    grid-template-columns: 1.15fr 0.85fr !important;
+    gap: 5.5rem;
+    align-items: center;
+    min-height: calc(100dvh - 140px);
+  }
+
+  .desktop-highlights {
+    display: flex;
+  }
+
+  .action-subprompt {
+    display: block;
+  }
+
+  .toast-container {
+    left: auto;
+    right: 36px;
+    bottom: 36px;
+    max-width: 400px;
+  }
+}
+
+/* ==========================================================================
+   INTERACTIVE DRAWERS & MODALS (Fully Screen-Adaptive)
+   ========================================================================== */
+
+/* Sliding Bottom Sheet / Desktop Modal */
 .auth-drawer {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  z-index: 80;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -606,8 +963,8 @@ body.mode-fluid .status-bar {
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -623,11 +980,13 @@ body.mode-fluid .status-bar {
   -webkit-backdrop-filter: blur(28px);
   border-top: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 28px 28px 0 0;
-  padding: 1rem 1.6rem 2.2rem 1.6rem;
+  padding: 1.25rem 1.75rem max(2rem, env(safe-area-inset-bottom)) 1.75rem;
   box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.6);
   transform: translateY(100%);
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 10;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .auth-drawer.active .drawer-card {
@@ -666,8 +1025,8 @@ body.mode-fluid .status-bar {
   right: 0;
   background: rgba(255, 255, 255, 0.1);
   border: none;
-  width: 30px;
-  height: 30px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   color: #fff;
   font-size: 1.3rem;
@@ -682,7 +1041,7 @@ body.mode-fluid .status-bar {
   background: rgba(255, 255, 255, 0.22);
 }
 
-/* Form Styling */
+/* Form Elements */
 .drawer-form {
   display: flex;
   flex-direction: column;
@@ -716,14 +1075,14 @@ body.mode-fluid .status-bar {
 
 .input-container input {
   width: 100%;
-  height: 46px;
+  height: 48px;
   background: rgba(255, 255, 255, 0.07);
   border: 1.5px solid rgba(255, 255, 255, 0.14);
   border-radius: 12px;
   padding: 0 42px 0 42px;
   color: #ffffff;
   font-family: inherit;
-  font-size: 0.92rem;
+  font-size: 0.94rem;
   outline: none;
   transition: all 0.2s ease;
 }
@@ -776,7 +1135,7 @@ body.mode-fluid .status-bar {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  margin-top: 0.4rem;
+  margin-top: 0.3rem;
   box-shadow: 0 4px 16px rgba(184, 67, 121, 0.4);
   transition: all 0.2s ease;
 }
@@ -805,15 +1164,45 @@ body.mode-fluid .status-bar {
   display: block;
 }
 
+/* Adaptive Drawer Transformation: Bottom Sheet on Mobile -> Center Dialog on Tablet/Desktop */
+@media (min-width: 768px) {
+  .auth-drawer {
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+  }
+
+  .drawer-card {
+    width: 100%;
+    max-width: 440px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7);
+    transform: scale(0.92);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 2rem 2.25rem;
+  }
+
+  .auth-drawer.active .drawer-card {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  .drawer-handle-bar {
+    display: none;
+  }
+}
+
 /* --- Google OAuth Simulation Modal --- */
 .oauth-modal {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  z-index: 90;
+  z-index: 110;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding: 1.25rem;
   pointer-events: none;
   visibility: hidden;
   transition: visibility 0.25s ease;
@@ -841,7 +1230,7 @@ body.mode-fluid .status-bar {
 .oauth-card {
   position: relative;
   width: 100%;
-  max-width: 325px;
+  max-width: 360px;
   background: #ffffff;
   color: #1f1f1f;
   border-radius: 20px;
@@ -956,20 +1345,20 @@ body.mode-fluid .status-bar {
 
 /* --- Toast Notifications --- */
 .toast-container {
-  position: absolute;
-  bottom: 24px;
+  position: fixed;
+  bottom: max(20px, env(safe-area-inset-bottom));
   left: 20px;
   right: 20px;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  z-index: 100;
+  z-index: 120;
   pointer-events: none;
 }
 
 .toast {
-  background: rgba(18, 5, 14, 0.95);
-  backdrop-filter: blur(14px);
+  background: rgba(22, 6, 17, 0.95);
+  backdrop-filter: blur(16px);
   border: 1px solid var(--accent-name);
   border-radius: 12px;
   padding: 12px 16px;
@@ -1004,7 +1393,7 @@ body.mode-fluid .status-bar {
   flex-shrink: 0;
 }
 
-/* --- Animations --- */
+/* --- Entrance Animations --- */
 .animate-fade-in {
   animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
@@ -1021,34 +1410,5 @@ body.mode-fluid .status-bar {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-/* --- Responsive Adaptations --- */
-@media (max-width: 600px) {
-  .app-viewport {
-    padding: 0;
-  }
-
-  /* Automatically adapt to screen on real mobile devices */
-  body.mode-frame .phone-frame {
-    width: 100%;
-    height: 100vh;
-    max-height: 100vh;
-    border-radius: 0;
-    box-shadow: none;
-    border: none;
-  }
-
-  .phone-notch {
-    display: none;
-  }
-
-  .status-bar {
-    display: none;
-  }
-
-  .portal-content {
-    padding: 2rem 22px 1.5rem 22px;
   }
 }

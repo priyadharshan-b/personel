@@ -1,13 +1,10 @@
 /**
  * Priyadharshan Portfolio & Auth Portal
- * Interactive Logic & Micro-interactions
+ * Responsive Interactive Logic & Micro-interactions
  */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Elements
-  const body = document.body;
-  const currentTimeEl = document.getElementById('currentTime');
-
+  // Action Elements
   const btnGoogle = document.getElementById('btnGoogle');
   const btnEmail = document.getElementById('btnEmail');
   const accountSwitchLink = document.getElementById('accountSwitchLink');
@@ -40,22 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // State
   let isLoginMode = false; // false = Registration/Start, true = Direct Login
 
-  // --- Real-Time Clock for Phone Status Bar ---
-  function updateClock() {
-    const now = new Date();
-    let hours = now.getHours();
-    let minutes = now.getMinutes();
-    hours = hours % 12 || 12; // 12-hour format
-    minutes = minutes < 10 ? '0' + minutes : minutes;
-    if (currentTimeEl) {
-      currentTimeEl.textContent = `${hours}:${minutes}`;
-    }
-  }
-  updateClock();
-  setInterval(updateClock, 30000);
-
-
-
   // --- Login / Register Mode Toggle ---
   if (accountSwitchLink) {
     accountSwitchLink.addEventListener('click', (e) => {
@@ -68,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         drawerTitle.textContent = 'Welcome Back';
         drawerSubtitle.textContent = 'Enter your credentials to access your saved projects.';
         submitAuthBtn.querySelector('.submit-label').textContent = 'Sign In';
+        openAuthDrawer();
       } else {
         accountSwitchText.textContent = 'Already have an account?';
         accountSwitchLink.textContent = 'Login';
@@ -88,11 +70,15 @@ document.addEventListener('DOMContentLoaded', () => {
   function openOAuthModal() {
     oauthModal.classList.add('active');
     oauthModal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
   }
 
   function closeOAuthModal() {
     oauthModal.classList.remove('active');
     oauthModal.setAttribute('aria-hidden', 'true');
+    if (!authDrawer.classList.contains('active')) {
+      document.body.style.overflow = '';
+    }
   }
 
   if (oauthBackdrop) oauthBackdrop.addEventListener('click', closeOAuthModal);
@@ -106,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
         btnGoogle.classList.remove('loading');
         showToast('Signed in successfully as Priyadharshan B!', '✓');
-      }, 1100);
+      }, 1000);
     });
   }
 
@@ -114,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     googleGuestBtn.addEventListener('click', () => {
       closeOAuthModal();
       openAuthDrawer();
-      userEmailInput.focus();
+      setTimeout(() => userEmailInput && userEmailInput.focus(), 350);
     });
   }
 
@@ -129,17 +115,32 @@ document.addEventListener('DOMContentLoaded', () => {
     clearErrors();
     authDrawer.classList.add('active');
     authDrawer.setAttribute('aria-hidden', 'false');
-    setTimeout(() => userEmailInput.focus(), 300);
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+      // Focus input gently without viewport jump
+      if (userEmailInput && window.innerWidth >= 768) {
+        userEmailInput.focus();
+      }
+    }, 350);
   }
 
   function closeAuthDrawer() {
     authDrawer.classList.remove('active');
     authDrawer.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
     clearErrors();
   }
 
   if (drawerBackdrop) drawerBackdrop.addEventListener('click', closeAuthDrawer);
   if (drawerCloseBtn) drawerCloseBtn.addEventListener('click', closeAuthDrawer);
+
+  // Global Keyboard Escape listener
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (authDrawer.classList.contains('active')) closeAuthDrawer();
+      if (oauthModal.classList.contains('active')) closeOAuthModal();
+    }
+  });
 
   // Toggle Password Visibility
   if (togglePassBtn) {
@@ -160,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const password = userPasswordInput.value;
       let hasError = false;
 
-      // Simple regex for email validation
+      // Email regex
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!email) {
         emailError.textContent = 'Please enter your email address.';
@@ -191,8 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
         emailAuthForm.reset();
 
         const actionText = isLoginMode ? 'Welcome back!' : 'Account registered successfully!';
-        showToast(`${actionText} Logged in as ${email}`, '🚀');
-      }, 1200);
+        showToast(`${actionText} Authenticated as ${email}`, '🚀');
+      }, 1100);
     });
   }
 
@@ -217,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
       toast.classList.add('show');
     });
 
-    // Remove after 3.5 seconds
+    // Auto remove after 3.5 seconds
     setTimeout(() => {
       toast.classList.remove('show');
       setTimeout(() => {
@@ -227,4 +228,38 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 300);
     }, 3500);
   }
+
+  // --- Dynamic Screen Size & Range Monitor ---
+  function updateScreenRanges() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+    const root = document.documentElement;
+
+    // Width Ranges
+    let widthTier = 'micro-mobile';
+    if (w >= 1440) widthTier = 'ultrawide';
+    else if (w >= 1024) widthTier = 'desktop';
+    else if (w >= 768) widthTier = 'tablet';
+    else if (w >= 600) widthTier = 'foldable';
+    else if (w >= 440) widthTier = 'phablet';
+    else if (w >= 390) widthTier = 'flagship-mobile';
+    else if (w >= 360) widthTier = 'standard-mobile';
+
+    // Height Tiers
+    let heightTier = 'normal';
+    if (h <= 660) heightTier = 'short';
+    else if (h >= 850) heightTier = 'tall';
+
+    // Orientation
+    const orientation = w > h ? 'landscape' : 'portrait';
+
+    root.setAttribute('data-screen-width', widthTier);
+    root.setAttribute('data-screen-height', heightTier);
+    root.setAttribute('data-orientation', orientation);
+  }
+
+  updateScreenRanges();
+  window.addEventListener('resize', updateScreenRanges, { passive: true });
+  window.addEventListener('orientationchange', updateScreenRanges, { passive: true });
 });
+
