@@ -1,0 +1,1054 @@
+/* ==========================================================================
+   PRIYADHARSHAN PORTFOLIO & AUTH PORTAL STYLES
+   Pixel-accurate replication with modern glassmorphism & fluid responsiveness
+   ========================================================================== */
+
+/* --- Theme Variable Palettes --- */
+:root {
+  /* Default: Mulberry Plum (Exact Match to User Screenshot) */
+  --bg-gradient-top: #7e2752;
+  --bg-gradient-mid: #43122e;
+  --bg-gradient-bottom: #12030f;
+  --accent-name: #e995be;
+  --accent-name-glow: rgba(233, 149, 190, 0.25);
+  --text-primary: #ffffff;
+  --text-secondary: rgba(255, 255, 255, 0.78);
+  --text-muted: rgba(255, 255, 255, 0.62);
+  --btn-bg: rgba(26, 6, 19, 0.52);
+  --btn-border: rgba(255, 255, 255, 0.15);
+  --btn-border-hover: rgba(255, 255, 255, 0.32);
+  --btn-glow-hover: rgba(233, 149, 190, 0.18);
+  --link-color: #5d87ff;
+  --link-color-hover: #81a5ff;
+  --email-icon-bg: #4f78fa;
+  --orb-color-1: rgba(142, 38, 92, 0.35);
+  --orb-color-2: rgba(85, 17, 60, 0.4);
+  --orb-color-3: rgba(233, 149, 190, 0.15);
+  --surface-glass: rgba(25, 7, 18, 0.85);
+}
+
+/* Palette Variations */
+body.theme-cyber-violet {
+  --bg-gradient-top: #5c1e7a;
+  --bg-gradient-mid: #2c0b48;
+  --bg-gradient-bottom: #0b0217;
+  --accent-name: #cf95e9;
+  --accent-name-glow: rgba(207, 149, 233, 0.25);
+  --btn-bg: rgba(28, 8, 48, 0.52);
+  --btn-border: rgba(255, 255, 255, 0.16);
+  --btn-border-hover: rgba(207, 149, 233, 0.4);
+  --btn-glow-hover: rgba(207, 149, 233, 0.2);
+  --link-color: #7986cb;
+  --email-icon-bg: #6366f1;
+  --orb-color-1: rgba(124, 58, 237, 0.35);
+  --orb-color-2: rgba(91, 33, 182, 0.4);
+  --orb-color-3: rgba(192, 132, 252, 0.18);
+  --surface-glass: rgba(20, 5, 36, 0.88);
+}
+
+body.theme-sunset-rose {
+  --bg-gradient-top: #8b253b;
+  --bg-gradient-mid: #4a1020;
+  --bg-gradient-bottom: #120307;
+  --accent-name: #f7a08b;
+  --accent-name-glow: rgba(247, 160, 139, 0.25);
+  --btn-bg: rgba(36, 7, 14, 0.52);
+  --btn-border: rgba(255, 255, 255, 0.16);
+  --btn-border-hover: rgba(247, 160, 139, 0.4);
+  --btn-glow-hover: rgba(247, 160, 139, 0.2);
+  --link-color: #f472b6;
+  --email-icon-bg: #e11d48;
+  --orb-color-1: rgba(225, 29, 72, 0.32);
+  --orb-color-2: rgba(159, 18, 57, 0.4);
+  --orb-color-3: rgba(251, 146, 60, 0.18);
+  --surface-glass: rgba(30, 6, 12, 0.88);
+}
+
+body.theme-emerald-noir {
+  --bg-gradient-top: #104838;
+  --bg-gradient-mid: #0b2b22;
+  --bg-gradient-bottom: #020f0b;
+  --accent-name: #6ee7b7;
+  --accent-name-glow: rgba(110, 231, 183, 0.25);
+  --btn-bg: rgba(6, 26, 20, 0.55);
+  --btn-border: rgba(255, 255, 255, 0.14);
+  --btn-border-hover: rgba(110, 231, 183, 0.4);
+  --btn-glow-hover: rgba(110, 231, 183, 0.2);
+  --link-color: #38bdf8;
+  --email-icon-bg: #059669;
+  --orb-color-1: rgba(16, 185, 129, 0.32);
+  --orb-color-2: rgba(4, 120, 87, 0.38);
+  --orb-color-3: rgba(52, 211, 153, 0.18);
+  --surface-glass: rgba(5, 20, 16, 0.88);
+}
+
+body.theme-midnight-blue {
+  --bg-gradient-top: #1e3a8a;
+  --bg-gradient-mid: #111e48;
+  --bg-gradient-bottom: #030717;
+  --accent-name: #93c5fd;
+  --accent-name-glow: rgba(147, 197, 253, 0.25);
+  --btn-bg: rgba(9, 19, 48, 0.55);
+  --btn-border: rgba(255, 255, 255, 0.14);
+  --btn-border-hover: rgba(147, 197, 253, 0.4);
+  --btn-glow-hover: rgba(147, 197, 253, 0.2);
+  --link-color: #60a5fa;
+  --email-icon-bg: #2563eb;
+  --orb-color-1: rgba(37, 99, 235, 0.32);
+  --orb-color-2: rgba(30, 58, 138, 0.4);
+  --orb-color-3: rgba(96, 165, 250, 0.18);
+  --surface-glass: rgba(6, 14, 36, 0.88);
+}
+
+/* --- Base Resets & Global Setup --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html, body {
+  width: 100%;
+  min-height: 100%;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-primary);
+  background-color: #0b020a;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease;
+}
+
+/* Ambient Animated Mesh Background */
+.ambient-mesh {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.mesh-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: 0.8;
+  animation: floatOrb 18s ease-in-out infinite alternate;
+}
+
+.orb-1 {
+  top: 5%;
+  left: 20%;
+  width: 450px;
+  height: 450px;
+  background: var(--orb-color-1);
+}
+
+.orb-2 {
+  bottom: 15%;
+  right: 15%;
+  width: 480px;
+  height: 480px;
+  background: var(--orb-color-2);
+  animation-duration: 22s;
+  animation-direction: alternate-reverse;
+}
+
+.orb-3 {
+  top: 40%;
+  left: 45%;
+  width: 320px;
+  height: 320px;
+  background: var(--orb-color-3);
+  animation-duration: 15s;
+}
+
+@keyframes floatOrb {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(40px, -30px) scale(1.08);
+  }
+  100% {
+    transform: translate(-30px, 40px) scale(0.95);
+  }
+}
+
+/* --- App Viewport & Frame Containers --- */
+.app-viewport {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem 1rem;
+  z-index: 10;
+}
+
+/* PHONE FRAME MODE (Mockup View) */
+body.mode-frame .phone-frame {
+  position: relative;
+  width: 385px;
+  height: 800px;
+  max-height: 90vh;
+  border-radius: 46px;
+  background: #000;
+  box-shadow: 
+    0 0 0 10px #242226,
+    0 0 0 12px #3e3a42,
+    0 25px 60px -15px rgba(0, 0, 0, 0.85),
+    0 0 50px -10px var(--accent-name-glow);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* FLUID FULLSCREEN MODE */
+body.mode-fluid .phone-frame {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+  min-height: 100vh;
+  border-radius: 0;
+  box-shadow: none;
+  background: transparent;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.mode-fluid .app-viewport {
+  padding-top: 52px;
+  padding-bottom: 0;
+  align-items: stretch;
+}
+
+body.mode-fluid .phone-notch,
+body.mode-fluid .status-bar {
+  display: none;
+}
+
+/* Phone Bezel & Hardware Elements */
+.phone-notch {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.dynamic-island {
+  width: 110px;
+  height: 28px;
+  background: #000;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 12px;
+  gap: 8px;
+}
+
+.camera-lens {
+  width: 10px;
+  height: 10px;
+  background: radial-gradient(circle, #0b1a2a 40%, #000 80%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.sensor-dot {
+  width: 5px;
+  height: 5px;
+  background: #0e0515;
+  border-radius: 50%;
+}
+
+/* Status Bar */
+.status-bar {
+  height: 48px;
+  padding: 10px 24px 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+  z-index: 40;
+  user-select: none;
+}
+
+.status-icons {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.battery-icon {
+  width: 22px;
+  height: 11px;
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  border-radius: 3.5px;
+  padding: 1.2px;
+  position: relative;
+}
+
+.battery-icon::after {
+  content: '';
+  position: absolute;
+  right: -3.5px;
+  top: 2.2px;
+  width: 2px;
+  height: 4.5px;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 0 1px 1px 0;
+}
+
+.battery-fill {
+  width: 78%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 1.5px;
+}
+
+/* --- Canvas / Screen Background --- */
+.screen-canvas {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, 
+    var(--bg-gradient-top) 0%, 
+    var(--bg-gradient-mid) 48%, 
+    var(--bg-gradient-bottom) 100%
+  );
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Subtle atmospheric lighting layer */
+.hero-atmosphere {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 380px;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.subtle-light-beam {
+  position: absolute;
+  top: -120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+  border-radius: 50%;
+}
+
+/* --- Main Portal Content --- */
+.portal-content {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* Matches the lower vertical placement in user image */
+  padding: 0 28px 24px 28px;
+  z-index: 10;
+}
+
+/* Hero Typography Section */
+.intro-block {
+  margin-bottom: 2rem;
+}
+
+.hero-headline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-bottom: 0.75rem;
+}
+
+.salutation {
+  font-size: 1.85rem;
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text-primary);
+  letter-spacing: -0.02em;
+}
+
+.creator-name {
+  font-size: 2.35rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--accent-name);
+  text-transform: uppercase;
+  text-shadow: 0 2px 16px var(--accent-name-glow);
+}
+
+.hero-bio {
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+  font-weight: 400;
+  max-width: 330px;
+  letter-spacing: -0.01em;
+}
+
+/* Action Block & Buttons */
+.action-block {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.action-header {
+  display: flex;
+  align-items: center;
+}
+
+.action-prompt {
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+/* Primary Auth Buttons */
+.btn-auth {
+  position: relative;
+  width: 100%;
+  height: 54px;
+  background: var(--btn-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid var(--btn-border);
+  border-radius: 14px;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.28);
+}
+
+.btn-glow-layer {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 60%);
+  opacity: 0.7;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.btn-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+  z-index: 2;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.google-svg {
+  display: block;
+}
+
+.email-icon-wrap {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--email-icon-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(79, 120, 250, 0.4);
+}
+
+.email-symbol {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+  margin-top: -1px;
+}
+
+.btn-text {
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+}
+
+/* Button Micro-Interactions */
+.btn-auth:hover {
+  border-color: var(--btn-border-hover);
+  background: rgba(38, 10, 28, 0.65);
+  box-shadow: 
+    0 6px 24px rgba(0, 0, 0, 0.38),
+    0 0 20px var(--btn-glow-hover);
+  transform: translateY(-2px);
+}
+
+.btn-auth:active {
+  transform: scale(0.982);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+/* Loading state for Google Button */
+.btn-auth.loading .btn-content {
+  opacity: 0;
+}
+
+.btn-spinner {
+  display: none;
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border: 2.5px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #ffffff;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+  z-index: 3;
+}
+
+.btn-auth.loading .btn-spinner {
+  display: block;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Account Switcher Footer */
+.account-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+}
+
+.link-switch {
+  background: none;
+  border: none;
+  color: var(--link-color);
+  font-weight: 700;
+  font-size: 0.9rem;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+.link-switch:hover {
+  color: var(--link-color-hover);
+  text-shadow: 0 0 10px rgba(93, 135, 255, 0.45);
+}
+
+/* Bottom Home Bar (Mobile Style) */
+.bottom-home-bar {
+  width: 135px;
+  height: 4.5px;
+  background: rgba(255, 255, 255, 0.28);
+  border-radius: 4px;
+  margin: 1.5rem auto 0 auto;
+}
+
+/* --- Interactive Drawer / Bottom Sheet --- */
+.auth-drawer {
+  position: absolute;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  pointer-events: none;
+  visibility: hidden;
+  transition: visibility 0.3s ease;
+}
+
+.auth-drawer.active {
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.drawer-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.auth-drawer.active .drawer-backdrop {
+  opacity: 1;
+}
+
+.drawer-card {
+  position: relative;
+  background: var(--surface-glass);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 28px 28px 0 0;
+  padding: 1rem 1.6rem 2.2rem 1.6rem;
+  box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.6);
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+}
+
+.auth-drawer.active .drawer-card {
+  transform: translateY(0);
+}
+
+.drawer-handle-bar {
+  width: 44px;
+  height: 4.5px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 4px;
+  margin: 0 auto 1.25rem auto;
+}
+
+.drawer-header {
+  position: relative;
+  margin-bottom: 1.25rem;
+}
+
+.drawer-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.drawer-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+}
+
+.drawer-close {
+  position: absolute;
+  top: -4px;
+  right: 0;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.drawer-close:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+/* Form Styling */
+.drawer-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-field label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.field-icon {
+  position: absolute;
+  left: 14px;
+  color: rgba(255, 255, 255, 0.45);
+  pointer-events: none;
+}
+
+.input-container input {
+  width: 100%;
+  height: 46px;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  padding: 0 42px 0 42px;
+  color: #ffffff;
+  font-family: inherit;
+  font-size: 0.92rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.input-container input::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+}
+
+.input-container input:focus {
+  border-color: var(--accent-name);
+  background: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 0 0 3px var(--accent-name-glow);
+}
+
+.btn-toggle-pass {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
+.btn-toggle-pass:hover {
+  color: #fff;
+}
+
+.field-error {
+  font-size: 0.75rem;
+  color: #f87171;
+  min-height: 1rem;
+}
+
+.btn-submit {
+  position: relative;
+  width: 100%;
+  height: 48px;
+  background: linear-gradient(135deg, var(--accent-name) 0%, #b84379 100%);
+  border: none;
+  border-radius: 12px;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.96rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.4rem;
+  box-shadow: 0 4px 16px rgba(184, 67, 121, 0.4);
+  transition: all 0.2s ease;
+}
+
+.btn-submit:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.btn-submit.loading .submit-label {
+  opacity: 0;
+}
+
+.spinner-small {
+  display: none;
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.75s linear infinite;
+}
+
+.btn-submit.loading .spinner-small {
+  display: block;
+}
+
+/* --- Google OAuth Simulation Modal --- */
+.oauth-modal {
+  position: absolute;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  pointer-events: none;
+  visibility: hidden;
+  transition: visibility 0.25s ease;
+}
+
+.oauth-modal.active {
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.oauth-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.oauth-modal.active .oauth-backdrop {
+  opacity: 1;
+}
+
+.oauth-card {
+  position: relative;
+  width: 100%;
+  max-width: 325px;
+  background: #ffffff;
+  color: #1f1f1f;
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.65);
+  transform: scale(0.92);
+  opacity: 0;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 10;
+}
+
+.oauth-modal.active .oauth-card {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.oauth-brand-header {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: #1f1f1f;
+}
+
+.oauth-hint {
+  font-size: 0.85rem;
+  color: #5f6368;
+  margin: 0.65rem 0 1.25rem 0;
+  line-height: 1.35;
+}
+
+.oauth-account-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.account-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  background: #f8f9fa;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.15s ease;
+  font-family: inherit;
+}
+
+.account-item:hover {
+  background: #eff2f5;
+  border-color: #cfd4d9;
+}
+
+.account-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #ea4335;
+  color: #fff;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.account-avatar.guest {
+  background: #e8eaed;
+  color: #5f6368;
+}
+
+.account-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.account-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #202124;
+}
+
+.account-email {
+  font-size: 0.76rem;
+  color: #5f6368;
+}
+
+.oauth-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-cancel {
+  background: none;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1a73e8;
+  cursor: pointer;
+  padding: 6px 12px;
+  border-radius: 6px;
+}
+
+.btn-cancel:hover {
+  background: #f1f3f4;
+}
+
+/* --- Toast Notifications --- */
+.toast-container {
+  position: absolute;
+  bottom: 24px;
+  left: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.toast {
+  background: rgba(18, 5, 14, 0.95);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--accent-name);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55);
+  font-size: 0.88rem;
+  font-weight: 500;
+  transform: translateY(20px);
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: auto;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.toast-icon {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(233, 149, 190, 0.2);
+  color: var(--accent-name);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+/* --- Animations --- */
+.animate-fade-in {
+  animation: fadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.animate-fade-in-delayed {
+  animation: fadeIn 0.8s 0.15s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Responsive Adaptations --- */
+@media (max-width: 600px) {
+  .app-viewport {
+    padding: 0;
+  }
+
+  /* Automatically adapt to screen on real mobile devices */
+  body.mode-frame .phone-frame {
+    width: 100%;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+  }
+
+  .phone-notch {
+    display: none;
+  }
+
+  .status-bar {
+    display: none;
+  }
+
+  .portal-content {
+    padding: 2rem 22px 1.5rem 22px;
+  }
+}
