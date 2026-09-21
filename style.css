@@ -1,12 +1,12 @@
 /* ==========================================================================
    PRIYADHARSHAN LANDING PAGE
-   Production-Grade Fluid Responsive Design System
-   Preserves visual identity • Continuous scaling • Calibrated vertical rhythm
+   Refined Responsive Scale & Vertical Rhythm System
+   Continuous multi-axis fluid scaling • Intentional spatial balance
    ========================================================================== */
 
-/* --- Design Tokens & Color Architecture --- */
+/* --- Design Tokens & Color System --- */
 :root {
-  /* Controlled Palette: Wine / Mulberry to Dark Plum */
+  /* Controlled Palette: Mulberry/Wine to Dark Plum */
   --color-canvas: #120310;
   --color-bg-1: #872b5e;
   --color-bg-2: #6a1e48;
@@ -19,23 +19,23 @@
   --color-text-secondary: #e2c0d4;
   --color-text-muted: #cba3bc;
   --color-accent: #f29bc3;
-  --color-accent-glow: rgba(242, 155, 195, 0.25);
+  --color-accent-glow: rgba(242, 155, 195, 0.28);
 
-  /* Interactive Elements */
+  /* Interactive Controls */
   --color-link: #5c88ff;
   --color-link-hover: #85a6ff;
-  --color-btn-bg: rgba(28, 7, 21, 0.62);
-  --color-btn-bg-hover: rgba(42, 10, 32, 0.78);
-  --color-btn-border: rgba(255, 255, 255, 0.13);
-  --color-btn-border-hover: rgba(255, 255, 255, 0.25);
+  --color-btn-bg: rgba(28, 7, 21, 0.64);
+  --color-btn-bg-hover: rgba(44, 10, 34, 0.82);
+  --color-btn-border: rgba(255, 255, 255, 0.14);
+  --color-btn-border-hover: rgba(255, 255, 255, 0.28);
   --color-email-badge: #3b6cf6;
 
-  /* Typography Font Families */
+  /* Font Families */
   --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono-badge: 'Space Grotesk', system-ui, -apple-system, sans-serif;
+  --font-badge: 'Space Grotesk', system-ui, -apple-system, sans-serif;
 }
 
-/* --- Resets & Global Foundation --- */
+/* --- Foundation & Resets --- */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -73,9 +73,9 @@ body {
 
 /* ==========================================================================
    VERTICAL LAYOUT & RESPONSIVE CONTAINER
-   - Continuous adaptation across viewport heights & widths
-   - margin-block: auto prevents top/bottom data clipping on short screens
-   - Full safe-area inset protection for notch & home bars
+   - Scales naturally with BOTH viewport width (vw) and viewport height (vh)
+   - Resilient centering (margin-block: auto) ensures zero top data cutoff
+   - Full safe-area inset protection
    ========================================================================== */
 .container {
   flex: 1;
@@ -88,19 +88,18 @@ body {
   justify-content: center;
   overflow-y: auto;
   overflow-x: hidden;
-  /* Fluid padding that compresses on small viewports and breathes on larger screens */
-  padding-block: clamp(1.25rem, 4vh, 3.5rem);
+  /* Fluid padding: scales smoothly with height and width */
+  padding-block: clamp(1.75rem, 4vh, 3.5rem);
   padding-inline: clamp(1.25rem, 5vw, 2.5rem);
-  padding-top: max(clamp(1.25rem, 4vh, 3.5rem), env(safe-area-inset-top, 0px));
-  padding-bottom: max(clamp(1.25rem, 4vh, 3.5rem), env(safe-area-inset-bottom, 0px));
+  padding-top: max(clamp(1.75rem, 4vh, 3.5rem), env(safe-area-inset-top, 0px));
+  padding-bottom: max(clamp(1.75rem, 4vh, 3.5rem), env(safe-area-inset-bottom, 0px));
   padding-left: max(clamp(1.25rem, 5vw, 2.5rem), env(safe-area-inset-left, 0px));
   padding-right: max(clamp(1.25rem, 5vw, 2.5rem), env(safe-area-inset-right, 0px));
 }
 
-/* Central Content Measure (Fluid width up to intentional readable maximum) */
+/* Content Wrapper: Intentional measure, occupying comfortable screen width */
 .content {
-  width: 100%;
-  max-width: clamp(290px, 86vw, 390px);
+  width: min(100%, clamp(310px, 86vw, 410px));
   margin-inline: auto;
   margin-block: auto;
   display: flex;
@@ -108,94 +107,95 @@ body {
 }
 
 /* ==========================================================================
-   TYPOGRAPHY SYSTEM (Fluid, Scaled, Proportional)
+   TYPOGRAPHY SYSTEM (Scaled, Proportional, Clear Hierarchy)
    ========================================================================== */
 .intro {
   display: flex;
   flex-direction: column;
 }
 
-/* Salutation: "Hey, I’m" */
+/* Salutation: "Hey, I’m" - Clear, confident small heading */
 .greeting {
-  font-size: clamp(1.3rem, 3.2vw + 0.45rem, 1.8rem);
+  font-size: clamp(1.4rem, 2.5vw + 0.8vh + 0.4rem, 1.95rem);
   font-weight: 700;
-  line-height: 1.12;
+  line-height: 1.15;
   color: var(--color-text-primary);
   letter-spacing: -0.025em;
   margin: 0;
 }
 
-/* Name: "PRIYADHARSHAN" (Scaled mathematically to NEVER clip on any mobile width) */
+/* Name: "PRIYADHARSHAN" - Large dominant identity heading (Zero clipping) */
 .name {
-  font-size: clamp(1.65rem, 5.6vw + 0.45rem, 2.75rem);
+  font-size: clamp(2.125rem, 4.5vw + 1.5vh + 0.5rem, 3.25rem);
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.02em;
   color: var(--color-accent);
   text-transform: uppercase;
-  margin-top: clamp(2px, 0.5vh, 5px);
-  text-shadow: 0 0 22px var(--color-accent-glow);
+  margin-top: clamp(4px, 0.8vh, 8px);
+  text-shadow: 0 0 24px var(--color-accent-glow);
   white-space: nowrap;
   word-break: normal;
   overflow-wrap: normal;
 }
 
-/* Description Paragraph: Optimal reading measure, fluid line-height */
+/* Description: Comfortable reading size, optimal measure */
 .bio {
-  font-size: clamp(0.85rem, 1.1vw + 0.55rem, 0.98rem);
-  line-height: clamp(1.4, 0.25vw + 1.38, 1.52);
+  font-size: clamp(0.94rem, 0.8vw + 0.3vh + 0.55rem, 1.08rem);
+  line-height: clamp(1.45, 0.25vw + 1.4, 1.55);
   color: var(--color-text-secondary);
   font-weight: 400;
-  margin-top: clamp(8px, 1.4vh, 14px);
+  margin-top: clamp(12px, 1.8vh, 20px);
   max-width: 36ch;
   letter-spacing: -0.01em;
 }
 
 /* ==========================================================================
-   ACTION BLOCK & INTERACTIVE BUTTONS
-   - Responsive components scaling height, padding, icon, and text
-   - Natural vertical pacing that scales with viewport height
+   ACTION SECTION & VERTICAL RHYTHM
+   - Unified Content Group: Balanced rhythm connects intro to actions
+   - Substantial, prominent, touch-friendly buttons
    ========================================================================== */
 .action {
   display: flex;
   flex-direction: column;
-  /* Dynamic vertical spacing prevents huge empty zones on tall displays and cutoffs on short ones */
-  margin-top: clamp(1.65rem, 5.5vh, 3.75rem);
+  /* Dynamic vertical rhythm: expands naturally on tall viewports */
+  margin-top: clamp(2.25rem, 5.5vh + 0.5rem, 4.25rem);
 }
 
+/* Section Heading: "Let’s Get Started..." */
 .start-label {
-  font-size: clamp(0.84rem, 0.7vw + 0.6rem, 0.94rem);
+  font-size: clamp(0.94rem, 0.6vw + 0.3vh + 0.6rem, 1.04rem);
   color: var(--color-text-muted);
   font-weight: 500;
   letter-spacing: 0.01em;
-  margin-bottom: clamp(12px, 2vh, 16px);
+  margin-bottom: clamp(14px, 1.8vh, 20px);
 }
 
 .button-group {
   display: flex;
   flex-direction: column;
-  gap: clamp(10px, 1.6vh, 14px);
+  gap: clamp(12px, 1.6vh, 16px);
   width: 100%;
 }
 
-/* Primary Auth Buttons */
+/* Primary Auth Buttons: Substantial, comfortable controls */
 .btn {
   position: relative;
   width: 100%;
-  min-height: 48px;
-  height: clamp(48px, 5.8vh, 54px);
-  padding-inline: clamp(1rem, 3.5vw, 1.5rem);
-  padding-block: clamp(0.6rem, 1.2vh, 0.85rem);
+  min-height: 52px;
+  height: clamp(52px, 5.8vh + 6px, 58px);
+  padding-inline: clamp(1.2rem, 3.5vw, 1.6rem);
+  padding-block: clamp(0.7rem, 1.2vh, 0.9rem);
   background: var(--color-btn-bg);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border: 1px solid var(--color-btn-border);
-  border-radius: clamp(10px, 1.6vw + 4px, 13px);
+  border-radius: clamp(12px, 1.5vw + 6px, 15px);
   color: var(--color-text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(10px, 2.2vw, 13px);
+  gap: clamp(11px, 2.5vw, 14px);
   cursor: pointer;
   text-decoration: none;
   font-family: inherit;
@@ -226,16 +226,16 @@ body {
 
 /* Google Icon SVG */
 .google-icon {
-  width: clamp(20px, 1.8vw + 12px, 22px);
-  height: clamp(20px, 1.8vw + 12px, 22px);
+  width: clamp(22px, 1.5vw + 15px, 25px);
+  height: clamp(22px, 1.5vw + 15px, 25px);
   flex-shrink: 0;
   display: block;
 }
 
 /* Email Icon Badge */
 .email-badge {
-  width: clamp(21px, 1.8vw + 13px, 24px);
-  height: clamp(21px, 1.8vw + 13px, 24px);
+  width: clamp(25px, 1.5vw + 17px, 28px);
+  height: clamp(25px, 1.5vw + 17px, 28px);
   border-radius: 50%;
   background: var(--color-email-badge);
   display: flex;
@@ -245,17 +245,17 @@ body {
 }
 
 .email-symbol {
-  font-family: var(--font-mono-badge);
-  font-size: clamp(0.82rem, 0.8vw + 0.52rem, 0.94rem);
+  font-family: var(--font-badge);
+  font-size: clamp(0.9rem, 0.6vw + 0.3vh + 0.55rem, 1rem);
   font-weight: 700;
   color: #ffffff;
   line-height: 1;
   margin-top: -1px;
 }
 
-/* Button Label Text */
+/* Button Text Label */
 .btn-text {
-  font-size: clamp(0.88rem, 0.6vw + 0.72rem, 0.98rem);
+  font-size: clamp(0.98rem, 0.6vw + 0.3vh + 0.6rem, 1.06rem);
   font-weight: 600;
   letter-spacing: -0.01em;
   color: var(--color-text-primary);
@@ -266,9 +266,9 @@ body {
    ACCOUNT SWITCHER / LOGIN LINK
    ========================================================================== */
 .switch-text {
-  margin-top: clamp(16px, 2.8vh, 24px);
+  margin-top: clamp(22px, 3vh, 32px);
   text-align: center;
-  font-size: clamp(0.82rem, 0.5vw + 0.68rem, 0.9rem);
+  font-size: clamp(0.88rem, 0.5vw + 0.2vh + 0.65rem, 0.96rem);
   color: var(--color-text-muted);
 }
 
@@ -292,8 +292,7 @@ body {
 }
 
 /* ==========================================================================
-   SHORT SCREENS & EXTREME VIEWPORTS ADAPTATION
-   (Smooth gracefully without separate divergent layouts)
+   SHORT SCREEN / KEYBOARD / LANDSCAPE GRACEFUL COMPRESSION
    ========================================================================== */
 @media (max-height: 600px) {
   .container {
@@ -301,25 +300,29 @@ body {
   }
 
   .action {
-    margin-top: 1.25rem;
+    margin-top: 1.4rem;
   }
 
   .start-label {
-    margin-bottom: 8px;
+    margin-bottom: 10px;
   }
 
   .button-group {
-    gap: 8px;
+    gap: 10px;
   }
 
   .btn {
-    min-height: 44px;
-    height: 44px;
+    min-height: 46px;
+    height: 46px;
+  }
+
+  .switch-text {
+    margin-top: 16px;
   }
 }
 
 /* ==========================================================================
-   ACCESSIBILITY & PREFERS-REDUCED-MOTION
+   ACCESSIBILITY: PREFERS-REDUCED-MOTION
    ========================================================================== */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
